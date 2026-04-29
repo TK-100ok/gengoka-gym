@@ -24,7 +24,7 @@ class TrainingsController < ApplicationController
         overall_comment: result["overall_comment"],
         score: result["score"]
       )
-      redirect_to training_path(@training), notice: "トレーニングを保存しました"
+      redirect_to result_training_path(@training), notice: "トレーニングを保存しました"
     else
       @targets = Target.all
       render :new, status: :unprocessable_entity
@@ -32,6 +32,10 @@ class TrainingsController < ApplicationController
   end
 
   def show
+    @training = current_user.trainings.find(params[:id])
+  end
+
+  def result
     @training = current_user.trainings.find(params[:id])
   end
 end
