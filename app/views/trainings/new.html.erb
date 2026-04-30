@@ -36,10 +36,12 @@
             <%= f.collection_select :target_id, @targets, :id, :name, {},
               class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
 
-            <%= f.label :custom_target, "その他の相手", class: "block text-sm font-semibold text-gray-600 mb-1" %>
-            <%= f.text_field :custom_target,
-              placeholder: "説明したい相手を入力してください",
-              class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+            <div id="custom-target-field" class="<%= 'hidden' unless @training.target&.name == 'その他' %>">
+              <%= f.label :custom_target, "その他の相手", class: "block text-sm font-semibold text-gray-600 mb-1" %>
+              <%= f.text_field :custom_target,
+                placeholder: "説明したい相手を入力してください",
+                class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+            </div>
 
             <%= f.label :explanation, "説明内容", class: "block text-sm font-semibold text-gray-600 mb-1" %>
             <%= f.text_area :explanation,
