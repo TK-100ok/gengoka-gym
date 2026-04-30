@@ -3,6 +3,8 @@ ja:
     models:
       training: トレーニング
     attributes:
+      user:
+        name: ユーザー名
       training:
         theme: テーマ
         explanation: 説明
