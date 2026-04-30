@@ -10,6 +10,12 @@ ja:
         explanation: 説明
         target: 相手
         custom_target: 相手（その他）
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "入力に問題があります"
 
   errors:
     messages:
