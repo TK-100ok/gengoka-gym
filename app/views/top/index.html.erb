@@ -1,40 +1,17 @@
 <div class="text-center px-6 py-12">
-  <% if user_signed_in? %>
-  <p>ようこそ <%= current_user.name %></p>
-
-  <%= link_to "ログアウト",
-    destroy_user_session_path,
-    data: { turbo_method: :delete },
-    class: "text-red-500" %>
-
-  <% else %>
-  <%= link_to "ログイン",
-    new_user_session_path,
-    class: "text-blue-500" %>
-
-  <%= link_to "新規登録",
-    new_user_registration_path,
-    class: "bg-blue-500 text-white px-4 py-2 rounded" %>
-  <% end %>
 
   <h1 class="text-2xl font-bold mb-4">
-    “伝わらない”をなくす、説明力トレーニング
+    “伝わらない”をなくす、言語化トレーニング
   </h1>
 
   <p class="text-gray-600 mb-6">
-    相手を設定して説明を書くと、AIがフィードバック。<br>
-    分かりやすい説明力を実践的に鍛えられます。
+    テーマと相手を設定して説明を書くと、AIがフィードバック。<br>
+    分かりやすい言語化力を実践的に鍛えられます。
   </p>
 
   <div class="bg-gray-200 h-48 mb-6 flex items-center justify-center">
-    UIイメージ or 図
+    UIイメージ or 図 (本リリースで実装予定)
   </div>
-
-  <ul class="text-sm text-gray-700 space-y-1 mb-8">
-    <li>✔ 自分の理解度がわかる</li>
-    <li>✔ 説明の型が身につく</li>
-    <li>✔ AIが客観的に評価</li>
-  </ul>
 
   <div class="flex flex-col sm:flex-row gap-4 justify-center">
    <%= link_to "ログイン", new_user_session_path, class: "w-1/4 text-center bg-blue-500 text-white py-4 rounded-2xl font-bold text-lg opacity-80 hover:opacity-100" %>
