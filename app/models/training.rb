@@ -4,7 +4,7 @@ class Training < ApplicationRecord
 
   validates :theme, presence: true
   validates :explanation, presence: true, length: { minimum: 10 }
-  validates :target_id, presence: true
+  validates :target, presence: true
 
   validate :custom_target_if_needed
 
