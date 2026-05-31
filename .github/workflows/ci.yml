@@ -69,7 +69,20 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Run tests
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install JavaScript dependencies
+        run: yarn install
+
+      - name: Build assets
+        run: |
+          yarn build
+          yarn build:css
+
+      - name: Run RSpec
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/myapp_test
@@ -77,7 +90,7 @@ jobs:
           # REDIS_URL: redis://localhost:6379/0
         run: |
           bin/rails db:prepare
-          bin/rails test
+          bundle exec rspec
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
