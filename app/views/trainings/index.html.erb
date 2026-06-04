@@ -11,7 +11,7 @@
     </h1>
 
     <% if @trainings.any? %>
-      <div class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         <% @trainings.each do |training| %>
           <%= link_to training_path(training), class: "block" do %>
             <div class="bg-white p-5 rounded-2xl shadow hover:shadow-md transition border border-gray-100">
