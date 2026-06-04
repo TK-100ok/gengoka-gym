@@ -9,6 +9,20 @@
 
     <%= yield :head %>
 
+    <!-- OGP -->
+    <meta property="og:title" content="言語化トレーニングジム">
+    <meta property="og:description" content="AIフィードバックで伝わる説明力を鍛える言語化トレーニングアプリ">
+    <meta property="og:image" content="<%= image_url('ogp.png') %>">
+    <meta property="og:url" content="<%= root_url %>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="言語化トレーニングジム">
+
+    <!-- twitter(X)用OGP -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="言語化トレーニングジム">
+    <meta name="twitter:description" content="AIフィードバックで伝わる説明力を鍛える言語化トレーニングアプリ">
+    <meta name="twitter:image" content="<%= image_url('ogp.png') %>">
+
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
