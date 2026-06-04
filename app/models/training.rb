@@ -9,6 +9,7 @@ class Training < ApplicationRecord
   validate :custom_target_if_needed
 
   has_one :ai_feedback, dependent: :destroy
+  has_one :post, dependent: :destroy
 
   def display_target
     if target&.name == "その他"

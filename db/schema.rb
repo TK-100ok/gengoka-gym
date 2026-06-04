@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_29_023828) do
+ActiveRecord::Schema[7.2].define(version: 2026_06_04_091413) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_29_023828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["training_id"], name: "index_ai_feedbacks_on_training_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "training_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_id"], name: "index_posts_on_training_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "targets", force: :cascade do |t|
@@ -57,6 +66,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_29_023828) do
   end
 
   add_foreign_key "ai_feedbacks", "trainings"
+  add_foreign_key "posts", "trainings"
+  add_foreign_key "posts", "users"
   add_foreign_key "trainings", "targets"
   add_foreign_key "trainings", "users"
 end
