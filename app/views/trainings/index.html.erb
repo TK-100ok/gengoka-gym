@@ -55,6 +55,17 @@
                   </p>
                 </div>
               </div>
+
+              <!-- 説明内容 -->
+              <div>
+                <p class="text-xs text-gray-500 mb-1">
+                  説明内容
+                </p>
+
+                <p class="text-sm text-gray-700 leading-relaxed">
+                  <%= truncate(training.explanation, length: 80) %>
+                </p>
+              </div>
             </div>
           <% end %>
         <% end %>
