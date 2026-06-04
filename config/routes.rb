@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :result
     end
   end
+  resources :posts, only: %i[index]
 
   get "terms", to: "static_pages#terms"
   get "privacy_policy", to: "static_pages#privacy_policy"
