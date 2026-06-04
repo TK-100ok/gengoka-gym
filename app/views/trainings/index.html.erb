@@ -13,61 +13,7 @@
     <% if @trainings.any? %>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         <% @trainings.each do |training| %>
-          <%= link_to training_path(training), class: "block" do %>
-            <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 h-full border border-gray-100">
-
-              <!-- 日付 -->
-              <p class="text-sm text-gray-400 mb-4">
-                <%= training.created_at.strftime("%Y/%m/%d") %>
-              </p>
-
-              <!-- テーマ -->
-              <div class="mb-5">
-                <p class="text-xs text-gray-500 mb-1">
-                  テーマ
-                </p>
-
-                <h2 class="truncate text-lg font-bold text-gray-800 break-words">
-                  <%= training.theme %>
-                </h2>
-              </div>
-
-              <!-- 相手とスコア -->
-              <div class="flex justify-between gap-4">
-
-                <div class="min-w-0 mb-5">
-                  <p class="text-xs text-gray-500">
-                    説明相手
-                  </p>
-
-                  <p class="truncate text-gray-800">
-                    <%= training.display_target %>
-                  </p>
-                </div>
-
-                <div class="shrink-0 text-right">
-                  <p class="text-xs text-gray-500">
-                    スコア
-                  </p>
-
-                  <p class="font-semibold text-amber-600">
-                    <%= training.ai_feedback&.score || "-" %>点
-                  </p>
-                </div>
-              </div>
-
-              <!-- 説明内容 -->
-              <div>
-                <p class="text-xs text-gray-500 mb-1">
-                  説明内容
-                </p>
-
-                <p class="text-sm text-gray-700 leading-relaxed">
-                  <%= truncate(training.explanation, length: 80) %>
-                </p>
-              </div>
-            </div>
-          <% end %>
+          <%= render "training_card", training: training %>
         <% end %>
       </div>
     <% else %>
