@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.includes(training: [:target, :ai_feedback])
+    @posts = Post.includes(training: [ :target, :ai_feedback ])
                  .order(created_at: :desc)
   end
 
