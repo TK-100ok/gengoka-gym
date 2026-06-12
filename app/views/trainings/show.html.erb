@@ -85,10 +85,15 @@
               </p>
             </div>
 
+            <% unless @training.post.present? %>
+            <%= button_to "投稿する",
+              training_post_path(@training),
+              method: :post,
+              class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
+            <% end %>
+
           </div>
         <% end %>
-
     </div>
-
   </main>
 </div>
