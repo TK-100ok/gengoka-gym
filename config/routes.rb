@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     member do
       get :result
     end
+
+    resource :post, only: :create
   end
+
   resources :posts, only: %i[index]
 
   get "terms", to: "static_pages#terms"
