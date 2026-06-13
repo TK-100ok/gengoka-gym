@@ -1,32 +1,22 @@
-<div class="flex min-h-screen bg-amber-50 text-gray-800">
+<h1 class="text-2xl font-bold text-amber-500 mb-6">
+    みんなの投稿
+</h1>
 
-  <%= render "shared/sidebar" %>
+<% if @posts.any? %>
 
-  <main class="flex-1 p-8">
-
-    <h1 class="text-2xl font-bold text-amber-500 mb-6">
-      みんなの投稿
-    </h1>
-
-    <% if @posts.any? %>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        <% @posts.each do |post| %>
-          <%= render "trainings/training_card",
-              training: post.training %>
-        <% end %>
-      </div>
-
-    <% else %>
-
-      <div class="text-center mt-20">
-        <p class="text-gray-400">
-          まだ投稿がありません
-        </p>
-      </div>
-
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <% @posts.each do |post| %>
+        <%= render "trainings/training_card",
+            training: post.training %>
     <% end %>
+    </div>
 
-  </main>
+<% else %>
 
-</div>
+    <div class="text-center mt-20">
+    <p class="text-gray-400">
+        まだ投稿がありません
+    </p>
+    </div>
+
+<% end %>

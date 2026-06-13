@@ -1,38 +1,16 @@
-<div class="flex min-h-screen bg-amber-50">
+<!-- コンテンツ -->
+<div class="flex-1 flex flex-col items-center justify-center p-6">
 
-  <!-- サイドバー -->
-  <%= render "shared/sidebar" %>
+  <!-- メインCTA -->
+  <div class="w-full max-w-md text-center">
+    <h2 class="text-lg text-gray-700 mb-6">
+      今日もトレーニングしましょう 💪
+    </h2>
 
-  <!-- メイン -->
-  <main class="flex-1 flex flex-col">
-
-    <!-- ヘッダー -->
-    <header class="bg-white shadow px-6 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">ホーム</h1>
-
-      <% if user_signed_in? %>
-        <p class="text-sm text-gray-600">
-          こんにちは、<span class="font-semibold"><%= current_user.name %></span>
-        </p>
-      <% end %>
-    </header>
-
-    <!-- コンテンツ -->
-    <div class="flex-1 flex flex-col items-center justify-center p-6">
-
-      <!-- メインCTA -->
-      <div class="w-full max-w-md text-center">
-        <h2 class="text-lg text-gray-700 mb-6">
-          今日もトレーニングしましょう 💪
-        </h2>
-
-        <%= link_to new_training_path,
-          class: "block w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-4 rounded-xl shadow-lg transition" do %>
-          トレーニングを始める
-        <% end %>
-      </div>
-
-    </div>
-  </main>
+    <%= link_to new_training_path,
+      class: "block w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-4 rounded-xl shadow-lg transition" do %>
+      トレーニングを始める
+    <% end %>
+  </div>
 
 </div>
