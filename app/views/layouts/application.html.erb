@@ -40,18 +40,7 @@
       <% end %>
 
       <main class="flex-1 p-8">
-        <% flash.each do |type, message| %>
-        <% bg_class =
-            type == "notice" ?
-            "bg-green-50 border-green-200 text-green-700" :
-            "bg-red-50 border-red-200 text-red-700" %>
-
-        <div class="mx-auto max-w-4xl mt-4 px-4">
-          <div class="rounded-lg border px-4 py-3 <%= bg_class %>">
-            <%= message %>
-          </div>
-        </div>
-        <% end %>
+        <%= render "shared/flash" %>
         <%= yield %>
       </main>
     </div>
