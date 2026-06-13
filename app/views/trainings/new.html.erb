@@ -1,59 +1,50 @@
-<div class="flex min-h-screen bg-amber-50 text-gray-800">
+<div class="w-full max-w-2xl bg-white rounded-2xl shadow-md p-8">
 
-  <%= render "shared/sidebar" %>
+  <h1 class="text-2xl font-bold text-amber-500 mb-6">
+    📝 言語化トレーニング
+  </h1>
 
-  <main class="flex-1 flex items-center justify-center p-8">
+  <p class="text-gray-500 mb-6">
+    テーマを決めて、相手に伝える形で書いてみましょう
+  </p>
 
-    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-md p-8">
+    <%= form_with model: @training, url: trainings_path, local: true do |f| %>
+      <div class="space-y-5">
 
-      <h1 class="text-2xl font-bold text-amber-500 mb-6">
-        📝 言語化トレーニング
-      </h1>
-
-      <p class="text-gray-500 mb-6">
-        テーマを決めて、相手に伝える形で書いてみましょう
-      </p>
-
-        <%= form_with model: @training, url: trainings_path, local: true do |f| %>
-          <div class="space-y-5">
-
-            <% if @training.errors.any? %>
-            <div class="bg-red-100 text-red-700 p-4 rounded-lg">
-              <ul>
-                <% @training.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
+        <% if @training.errors.any? %>
+        <div class="bg-red-100 text-red-700 p-4 rounded-lg">
+          <ul>
+            <% @training.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
             <% end %>
-
-            <%= f.label :theme, "テーマ", class: "block text-sm font-semibold text-gray-600 mb-1" %>
-            <%= f.text_field :theme,
-              placeholder: "説明するテーマを入力してください",
-              class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <%= f.label :target_id, "説明する相手", class: "block text-sm font-semibold text-gray-600 mb-1" %>
-            <%= f.collection_select :target_id, @targets, :id, :name, {},
-              class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <div id="custom-target-field" class="<%= 'hidden' unless @training.target&.name == 'その他' %>">
-              <%= f.label :custom_target, "その他の相手", class: "block text-sm font-semibold text-gray-600 mb-1" %>
-              <%= f.text_field :custom_target,
-                placeholder: "説明したい相手を入力してください",
-                class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-            </div>
-
-            <%= f.label :explanation, "説明内容", class: "block text-sm font-semibold text-gray-600 mb-1" %>
-            <%= f.text_area :explanation,
-              placeholder: "相手に合わせて説明してみましょう",
-              class: "w-full h-40 px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <%= f.submit "トレーニング完了",
-              class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
-
-          </div>
+          </ul>
+        </div>
         <% end %>
-    </div>
 
-  </main>
+        <%= f.label :theme, "テーマ", class: "block text-sm font-semibold text-gray-600 mb-1" %>
+        <%= f.text_field :theme,
+          placeholder: "説明するテーマを入力してください",
+          class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+
+        <%= f.label :target_id, "説明する相手", class: "block text-sm font-semibold text-gray-600 mb-1" %>
+        <%= f.collection_select :target_id, @targets, :id, :name, {},
+          class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+
+        <div id="custom-target-field" class="<%= 'hidden' unless @training.target&.name == 'その他' %>">
+          <%= f.label :custom_target, "その他の相手", class: "block text-sm font-semibold text-gray-600 mb-1" %>
+          <%= f.text_field :custom_target,
+            placeholder: "説明したい相手を入力してください",
+            class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+        </div>
+
+        <%= f.label :explanation, "説明内容", class: "block text-sm font-semibold text-gray-600 mb-1" %>
+        <%= f.text_area :explanation,
+          placeholder: "相手に合わせて説明してみましょう",
+          class: "w-full h-40 px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+
+        <%= f.submit "トレーニング完了",
+          class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
+
+      </div>
+    <% end %>
 </div>

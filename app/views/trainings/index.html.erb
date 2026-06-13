@@ -1,30 +1,21 @@
-<div class="flex min-h-screen bg-amber-50 text-gray-800">
+<h1 class="text-2xl font-bold text-amber-500 mb-6">
+  📚 トレーニング履歴
+</h1>
 
-  <!-- サイドバー -->
-  <%= render "shared/sidebar" %>
-
-  <!-- メイン -->
-  <main class="flex-1 p-8">
-
-    <h1 class="text-2xl font-bold text-amber-500 mb-6">
-      📚 トレーニング履歴
-    </h1>
-
-    <% if @trainings.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        <% @trainings.each do |training| %>
-          <%= render "training_card", training: training %>
-        <% end %>
-      </div>
-    <% else %>
-
-      <!-- 空状態 -->
-      <div class="text-center mt-20">
-        <p class="text-gray-400 mb-4">
-          まだトレーニングがありません
-        </p>
-      </div>
-
+<% if @trainings.any? %>
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <% @trainings.each do |training| %>
+      <%= render "training_card", training: training %>
     <% end %>
-  </main>
-</div>
+  </div>
+<% else %>
+
+  <!-- 空状態 -->
+  <div class="text-center mt-20">
+    <p class="text-gray-400 mb-4">
+      まだトレーニングがありません
+    </p>
+  </div>
+
+<% end %>
+

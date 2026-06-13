@@ -33,20 +33,16 @@
   </head>
 
   <body>
-    <main class="min-h-screen">
-      <% flash.each do |type, message| %>
-      <% bg_class =
-          type == "notice" ?
-          "bg-green-50 border-green-200 text-green-700" :
-          "bg-red-50 border-red-200 text-red-700" %>
+    <div class="flex min-h-screen bg-amber-50 text-gray-800">
 
-      <div class="mx-auto max-w-4xl mt-4 px-4">
-        <div class="rounded-lg border px-4 py-3 <%= bg_class %>">
-          <%= message %>
-        </div>
-      </div>
+      <% if user_signed_in? %>
+        <%= render "shared/sidebar" %>
       <% end %>
-      <%= yield %>
-    </main>
+
+      <main class="flex-1 p-8">
+        <%= render "shared/flash" %>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
