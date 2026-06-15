@@ -11,6 +11,8 @@ class Training < ApplicationRecord
   has_one :ai_feedback, dependent: :destroy
   has_one :post, dependent: :destroy
 
+  has_many :favorites, dependent: :destroy
+
   def display_target
     if target&.name == "その他"
       custom_target.presence || "未設定"
