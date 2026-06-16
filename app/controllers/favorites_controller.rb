@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
-                             .includes(training: [:target, :ai_feedback])
+                             .includes(training: [ :target, :ai_feedback ])
                              .order(created_at: :desc)
   end
 
