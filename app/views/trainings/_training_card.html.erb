@@ -1,23 +1,7 @@
 <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 h-full border border-gray-100">
 
   <div class="flex justify-end mb-2">
-    <% if current_user.favorite_trainings.exists?(training.id) %>
-
-        <%= button_to training_favorite_path(training),
-        method: :delete,
-        class: "text-yellow-400 text-xl" do %>
-        ★
-        <% end %>
-
-    <% else %>
-
-        <%= button_to training_favorite_path(training),
-        method: :post,
-        class: "text-gray-300 hover:text-yellow-400 text-xl" do %>
-        ☆
-        <% end %>
-
-    <% end %>
+    <%= render "favorites/favorite_button", training: training %>
   </div>
 
   <!-- 日付 -->

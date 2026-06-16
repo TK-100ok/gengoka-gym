@@ -10,4 +10,16 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_trainings, through: :favorites, source: :training
+
+  def favorite(training)
+    favorite_trainings << training
+  end
+
+  def unfavorite(training)
+    favorite_trainings.destroy(training)
+  end
+
+  def favorite?(training)
+    favorite_trainings.include?(training)
+  end
 end

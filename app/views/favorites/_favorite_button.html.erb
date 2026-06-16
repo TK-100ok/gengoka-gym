@@ -1,0 +1,5 @@
+<% if current_user.favorite?(training) %>
+  <%= render "favorites/unfavorite", training: training %>
+<% else %>
+  <%= render "favorites/favorite", training: training %>
+<% end %>

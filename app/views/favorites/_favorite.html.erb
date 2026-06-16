@@ -1,0 +1,6 @@
+<%= link_to favorites_path(training_id: training.id),
+    id: "favorite-button-for-training-#{training.id}",
+    data: { turbo_method: :post } do %>
+
+    ☆
+<% end %>
