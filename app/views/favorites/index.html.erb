@@ -2,8 +2,18 @@
   ⭐ お気に入り
 </h1>
 
-<div class="text-center mt-20">
+<% if @favorites.any? %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <% @favorites.each do |favorite| %>
+      <%= render "trainings/training_card", training: favorite.training %>
+    <% end %>
+  </div>
+
+<% else %>
+
   <p class="text-gray-400">
-    お気に入り登録された投稿はありません
+    お気に入りはまだありません
   </p>
-</div>
+
+<% end %>
