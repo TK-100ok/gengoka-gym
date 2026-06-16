@@ -12,23 +12,7 @@
     </h1>
 
     <div class="flex justify-end mb-2">
-      <% if current_user.favorite_trainings.exists?(@training.id) %>
-
-          <%= button_to training_favorite_path(@training),
-          method: :delete,
-          class: "text-yellow-400 text-2xl" do %>
-          ★
-          <% end %>
-
-      <% else %>
-
-          <%= button_to training_favorite_path(@training),
-          method: :post,
-          class: "text-gray-300 hover:text-yellow-400 text-2xl" do %>
-          ☆
-          <% end %>
-
-      <% end %>
+      <%= render "favorites/favorite_button", training: @training %>
     </div>
   </div>
 
