@@ -2,6 +2,9 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @favorites = current_user.favorites
+                             .includes(training: [:target, :ai_feedback])
+                             .order(created_at: :desc)
   end
 
   def create
