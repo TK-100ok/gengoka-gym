@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: %i[index]
-  resources :favorites, only: :index
+  resources :favorites, only: %i[create destroy]
 
   get "terms", to: "static_pages#terms"
   get "privacy_policy", to: "static_pages#privacy_policy"
