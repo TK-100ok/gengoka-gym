@@ -1,6 +1,6 @@
-<%= link_to favorite_path(current_user.favorites.find_by(training_id: training.id)),
+<%= link_to training_favorite_path(training),
     id: "unfavorite-button-for-training-#{training.id}",
-    data: { turbo_method: :delete } do %>
-
+    data: { turbo_method: :delete },
+    class: "text-yellow-400 hover:text-yellow-500 text-xl transition" do %>
     ★
 <% end %>

@@ -10,8 +10,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find(params[:id])
-    @training = favorite.training
+    @training = Training.find(params[:training_id])
+    favorite = current_user.favorites.find_by!(training: @training)
     favorite.destroy
   end
 end
