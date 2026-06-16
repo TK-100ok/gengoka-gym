@@ -1,5 +1,24 @@
-<%= link_to training_path(training), class: "block" do %>
 <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-6 h-full border border-gray-100">
+
+  <div class="flex justify-end mb-2">
+    <% if current_user.favorite_trainings.exists?(training.id) %>
+
+        <%= button_to training_favorite_path(training),
+        method: :delete,
+        class: "text-yellow-400 text-xl" do %>
+        ★
+        <% end %>
+
+    <% else %>
+
+        <%= button_to training_favorite_path(training),
+        method: :post,
+        class: "text-gray-300 hover:text-yellow-400 text-xl" do %>
+        ☆
+        <% end %>
+
+    <% end %>
+  </div>
 
   <!-- 日付 -->
   <p class="text-sm text-gray-400 mb-4">
@@ -51,5 +70,8 @@
       <%= truncate(training.explanation, length: 80) %>
     </p>
   </div>
+
+  <div class="mt-4 flex justify-end">
+    <%= link_to "詳細を見る →", training_path(training), class: "inline-flex items-center text-sm font-semibold text-amber-600 hover:text-amber-700" %>
+  </div>
 </div>
-<% end %>
