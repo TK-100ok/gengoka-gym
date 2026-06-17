@@ -88,14 +88,19 @@
         </div>
 
         <% if @training.post.present? %>
-          <div class="w-full text-center bg-green-100 text-green-700 font-bold py-3 rounded-lg border border-green-200">
-              ✓ 投稿済み
-          </div>
+
+          <%= button_to "投稿を取り消す",
+            training_post_path(@training),
+            method: :delete,
+            class: "w-full bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 rounded-lg" %>
+
         <% else %>
+
           <%= button_to "投稿する",
             training_post_path(@training),
             method: :post,
             class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
+
         <% end %>
 
       </div>
