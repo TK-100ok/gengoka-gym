@@ -5,10 +5,6 @@ class FavoritesController < ApplicationController
     @q = current_user.favorite_trainings.ransack(params[:q])
     @trainings = @q.result
                    .includes(:target, :ai_feedback)
-
-    @favorites = current_user.favorites
-                             .includes(training: [ :target, :ai_feedback ])
-                             .order(created_at: :desc)
   end
 
   def create
