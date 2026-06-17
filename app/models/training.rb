@@ -21,6 +21,19 @@ class Training < ApplicationRecord
     end
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[
+      theme
+      explanation
+      created_at
+      target_id
+    ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[target]
+  end
+
   private
 
   def custom_target_if_needed
