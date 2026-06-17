@@ -2,7 +2,10 @@
   📚 トレーニング履歴
 </h1>
 
-<%= render("shared/search_form", q: @q, url: trainings_path) %>
+<%= render("shared/search_form",
+  q: @q,
+  url: trainings_path,
+  search_key: :theme_or_explanation_or_target_name_cont) %>
 
 <% if @trainings.any? %>
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">

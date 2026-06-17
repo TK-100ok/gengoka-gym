@@ -2,7 +2,10 @@
     みんなの投稿
 </h1>
 
-<%= render("shared/search_form", q: @q, url: posts_path) %>
+<%= render("shared/search_form",
+  q: @q,
+  url: posts_path,
+  search_key: :training_theme_or_training_explanation_or_training_target_name_cont) %>
 
 <% if @posts.any? %>
 
