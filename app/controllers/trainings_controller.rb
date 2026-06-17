@@ -3,9 +3,9 @@ class TrainingsController < ApplicationController
 
   def index
     @q = current_user.trainings.ransack(params[:q])
-    @trainings =@q.result
-                  .includes(:target, :ai_feedback, :post)
-                  .order(created_at: :desc)
+    @trainings = @q.result
+                   .includes(:target, :ai_feedback, :post)
+                   .order(created_at: :desc)
   end
 
   def new

@@ -2,6 +2,8 @@
   📚 トレーニング履歴
 </h1>
 
+<%= render("shared/search_form", q: @q, url: trainings_path) %>
+
 <% if @trainings.any? %>
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     <% @trainings.each do |training| %>
