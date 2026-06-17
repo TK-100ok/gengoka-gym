@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @q = Post.joins(:training).ransack(params[:q])
     @posts = @q.result(distinct: true)
-               .includes(training: [:target, :ai_feedback])
+               .includes(training: [ :target, :ai_feedback ])
                .order(created_at: :desc)
   end
 
