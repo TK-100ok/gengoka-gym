@@ -18,12 +18,10 @@ gem "stimulus-rails"
 gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-
 gem "devise"
-
 gem "ruby-openai"
-
 gem "devise-i18n"
+gem "ransack"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
