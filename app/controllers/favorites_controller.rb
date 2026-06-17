@@ -2,9 +2,10 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @favorites = current_user.favorites
-                             .includes(training: [ :target, :ai_feedback ])
-                             .order(created_at: :desc)
+    @q = current_user.favorite_trainings.ransack(params[:q])
+    @trainings = @q.result
+                   .includes(:target, :ai_feedback)
+                   .order(created_at: :desc)
   end
 
   def create

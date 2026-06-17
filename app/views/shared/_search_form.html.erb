@@ -1,0 +1,16 @@
+<%= search_form_for q, url: url, method: :get do |f| %>
+  <div class="mb-6 flex gap-2">
+
+    <%= f.search_field(
+      search_key,
+      placeholder: "テーマ・相手・説明内容で検索",
+      class: "flex-1 bg-white rounded-lg border border-gray-300 px-4 py-2"
+    ) %>
+
+    <%= f.submit(
+      "検索",
+      class: "bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded-lg"
+    ) %>
+
+  </div>
+<% end %>

@@ -2,8 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.includes(training: [ :target, :ai_feedback ])
-                 .order(created_at: :desc)
+    @q = Post.joins(:training).ransack(params[:q])
+    @posts = @q.result(distinct: true)
+               .includes(training: [ :target, :ai_feedback ])
+               .order(created_at: :desc)
   end
 
   def create

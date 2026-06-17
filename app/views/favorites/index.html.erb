@@ -2,11 +2,16 @@
   ⭐ お気に入り
 </h1>
 
-<% if @favorites.any? %>
+<%= render("shared/search_form",
+  q: @q,
+  url: favorites_path,
+  search_key: :theme_or_explanation_or_target_name_cont) %>
+
+<% if @trainings.any? %>
 
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-    <% @favorites.each do |favorite| %>
-      <%= render "trainings/training_card", training: favorite.training %>
+    <% @trainings.each do |training| %>
+      <%= render "trainings/training_card", training: training %>
     <% end %>
   </div>
 
