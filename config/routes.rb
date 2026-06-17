@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :result
     end
 
-    resource :post, only: :create
+    resource :post, only: %i[create destroy]
     resource :favorite, only: %i[create destroy]
   end
 
