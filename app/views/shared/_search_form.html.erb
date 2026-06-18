@@ -12,5 +12,14 @@
       class: "bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded-lg"
     ) %>
 
+    <%= f.select :s,
+      [
+          ["並び替え", ""],
+          ["スコア（降順）", "ai_feedback_score desc"],
+          ["スコア（昇順）", "ai_feedback_score asc"]
+      ],
+      {},
+      class: "bg-white rounded-lg border border-gray-300 px-4 py-2" %>
+
   </div>
 <% end %>
