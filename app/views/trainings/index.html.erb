@@ -5,7 +5,12 @@
 <%= render("shared/search_form",
   q: @q,
   url: trainings_path,
-  search_key: :theme_or_explanation_or_target_name_cont) %>
+  search_key: :theme_or_explanation_or_target_name_cont,
+  sort_options: [
+    ["並び替え", ""],
+    ["スコア（降順）", "ai_feedback_score desc"],
+    ["スコア（昇順）", "ai_feedback_score asc"]
+  ]) %>
 
 <% if @trainings.any? %>
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">

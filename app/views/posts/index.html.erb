@@ -5,7 +5,12 @@
 <%= render("shared/search_form",
   q: @q,
   url: posts_path,
-  search_key: :training_theme_or_training_explanation_or_training_target_name_cont) %>
+  search_key: :training_theme_or_training_explanation_or_training_target_name_cont,
+  sort_options: [
+    ["並び替え", ""],
+    ["スコア（降順）", "training_ai_feedback_score desc"],
+    ["スコア（昇順）", "training_ai_feedback_score asc"]
+  ]) %>
 
 <% if @posts.any? %>
 

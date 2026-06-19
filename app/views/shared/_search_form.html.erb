@@ -13,11 +13,7 @@
     ) %>
 
     <%= f.select :s,
-      [
-          ["並び替え", ""],
-          ["スコア（降順）", "ai_feedback_score desc"],
-          ["スコア（昇順）", "ai_feedback_score asc"]
-      ],
+      sort_options,
       {},
       class: "bg-white rounded-lg border border-gray-300 px-4 py-2",
       onchange: "this.form.submit();" %>
