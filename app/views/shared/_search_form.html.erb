@@ -13,8 +13,8 @@
     ) %>
 
     <%= f.select :s,
-      sort_options,
-      {},
+      options_for_select(sort_options, params.dig(:q, :s)),
+      { include_blank: "並び替え" },
       class: "bg-white rounded-lg border border-gray-300 px-4 py-2",
       onchange: "this.form.submit();" %>
 
