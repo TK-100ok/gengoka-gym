@@ -3,9 +3,8 @@ class FavoritesController < ApplicationController
 
   def index
     @q = current_user.favorite_trainings.ransack(params[:q])
-    @trainings = @q.result
-                   .includes(:target, :ai_feedback)
-                   .order(created_at: :desc)
+    @q.sorts = "created_at desc" if @q.sorts.empty?
+    @trainings = @q.result.includes(:target, :ai_feedback)
   end
 
   def create

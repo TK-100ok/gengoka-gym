@@ -26,7 +26,7 @@ class Training < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    %w[target]
+    %w[target ai_feedback]
   end
 
   private

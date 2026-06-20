@@ -5,7 +5,13 @@
 <%= render("shared/search_form",
   q: @q,
   url: favorites_path,
-  search_key: :theme_or_explanation_or_target_name_cont) %>
+  search_key: :theme_or_explanation_or_target_name_cont,
+  sort_options: [
+    ["作成日（降順）", "created_at desc"],
+    ["作成日（昇順）", "created_at asc"],
+    ["スコア（降順）", "ai_feedback_score desc"],
+    ["スコア（昇順）", "ai_feedback_score asc"]
+  ]) %>
 
 <% if @trainings.any? %>
 

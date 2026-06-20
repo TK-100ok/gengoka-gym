@@ -12,5 +12,11 @@
       class: "bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded-lg"
     ) %>
 
+    <%= f.select :s,
+      options_for_select(sort_options, params.dig(:q, :s)),
+      {},
+      class: "bg-white rounded-lg border border-gray-300 px-4 py-2",
+      onchange: "this.form.submit();" %>
+
   </div>
 <% end %>
