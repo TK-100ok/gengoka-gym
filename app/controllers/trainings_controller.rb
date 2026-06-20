@@ -3,8 +3,8 @@ class TrainingsController < ApplicationController
 
   def index
     @q = current_user.trainings.ransack(params[:q])
-    @trainings = @q.result
-                   .includes(:target, :ai_feedback, :post)
+    @q.sorts = "created_at desc" if @q.sorts.empty?
+    @trainings = @q.result.includes(:target, :ai_feedback, :post)
   end
 
   def new

@@ -3,8 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.joins(:training).ransack(params[:q])
-    @posts = @q.result
-               .includes(training: [ :target, :ai_feedback ])
+    @q.sorts = "created_at desc" if @q.sorts.empty?
+    @posts = @q.result.includes(training: [ :target, :ai_feedback ])
   end
 
   def create

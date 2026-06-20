@@ -7,6 +7,8 @@
   url: posts_path,
   search_key: :training_theme_or_training_explanation_or_training_target_name_cont,
   sort_options: [
+    ["投稿日（降順）", "created_at desc"],
+    ["投稿日（昇順）", "created_at asc"],
     ["スコア（降順）", "training_ai_feedback_score desc"],
     ["スコア（昇順）", "training_ai_feedback_score asc"]
   ]) %>
