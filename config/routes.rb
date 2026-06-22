@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "settings/index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "top#index"
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :posts, only: :index
   resources :favorites, only: :index
 
+  get "settings", to: "settings#index"
   get "terms", to: "static_pages#terms"
   get "privacy_policy", to: "static_pages#privacy_policy"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
