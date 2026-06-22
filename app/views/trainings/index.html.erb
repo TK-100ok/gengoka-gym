@@ -14,11 +14,13 @@
   ]) %>
 
 <% if @trainings.any? %>
+
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     <% @trainings.each do |training| %>
       <%= render "training_card", training: training %>
     <% end %>
   </div>
+
 <% else %>
 
   <!-- 空状態 -->
@@ -30,3 +32,6 @@
 
 <% end %>
 
+<div class="mt-8 flex justify-center">
+  <%= paginate @trainings %>
+</div>
