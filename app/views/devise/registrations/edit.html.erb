@@ -4,8 +4,6 @@
     ⚙️ アカウント設定
   </h1>
 
-  <div class="bg-white rounded-2xl shadow-md p-6">
-
     <%= form_for(
       resource,
       as: resource_name,
@@ -22,7 +20,7 @@
             class: "block font-medium mb-2" %>
 
         <%= f.text_field :name,
-            class: "w-full rounded-lg border border-gray-300 px-4 py-2" %>
+            class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
       </div>
 
       <!-- メールアドレス -->
@@ -39,8 +37,6 @@
         >
       </div>
 
-      <hr class="my-6">
-
       <h2 class="font-semibold mb-4">
         パスワード変更
       </h2>
@@ -53,7 +49,7 @@
 
         <%= f.password_field :password,
             autocomplete: "new-password",
-            class: "w-full rounded-lg border border-gray-300 px-4 py-2" %>
+            class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
       </div>
 
       <!-- 確認 -->
@@ -64,7 +60,7 @@
 
         <%= f.password_field :password_confirmation,
             autocomplete: "new-password",
-            class: "w-full rounded-lg border border-gray-300 px-4 py-2" %>
+            class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
       </div>
 
       <!-- 現在のパスワード -->
@@ -75,7 +71,7 @@
 
         <%= f.password_field :current_password,
             autocomplete: "current-password",
-            class: "w-full rounded-lg border border-gray-300 px-4 py-2" %>
+            class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
 
         <p class="text-sm text-gray-500 mt-1">
           変更内容を保存するために必要です
@@ -87,5 +83,4 @@
 
     <% end %>
 
-  </div>
 </div>
