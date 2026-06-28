@@ -4,40 +4,35 @@
 
 <div class="space-y-4">
 
-  <%= link_to edit_user_registration_path,
-      class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
+  <%= link_to edit_user_registration_path, class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
     <p class="font-semibold">アカウント設定</p>
     <p class="text-sm text-gray-500">
       ユーザー名やパスワードを変更
     </p>
   <% end %>
 
-  <%= link_to terms_path,
-      class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
+  <%= link_to terms_path, class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
     <p class="font-semibold">利用規約</p>
     <p class="text-sm text-gray-500">
       利用規約を確認
     </p>
   <% end %>
 
-  <%= link_to privacy_policy_path,
-      class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
+  <%= link_to privacy_policy_path, class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
     <p class="font-semibold">プライバシーポリシー</p>
     <p class="text-sm text-gray-500">
       個人情報の取り扱いについて
     </p>
   <% end %>
 
-  <%= link_to "#",
-      class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
-    <p class="font-semibold">お問い合わせ（準備中）</p>
+  <%= link_to contact_path, class: "block bg-white rounded-2xl shadow-md p-5 hover:bg-gray-50 transition" do %>
+    <p class="font-semibold">お問い合わせ</p>
     <p class="text-sm text-gray-500">
       お問い合わせフォームへ
     </p>
   <% end %>
 
-  <%= link_to "#",
-      class: "block bg-red-50 rounded-2xl shadow-md p-5 hover:bg-red-100 transition border border-red-200" do %>
+  <%= link_to "#", class: "block bg-red-50 rounded-2xl shadow-md p-5 hover:bg-red-100 transition border border-red-200" do %>
     <p class="font-semibold text-red-600">
       アカウント削除
     </p>
