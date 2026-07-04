@@ -23,4 +23,19 @@ class AiUsageService
   def self.remaining_count(user)
     [today_limit(user) - usage_count(user), 0].max
   end
+
+  def self.increment(user)
+    key = redis_key(user)
+
+    REDIS.incr(key)
+
+    unless REDIS.ttl(key).positive?
+      REDIS.expire(key, seconds_until_midnight)
+    end
+  end
+
+  def self.seconds_until_midnight
+    tomorrow = Time.zone.tomorrow.beginning_of_day
+    (tomorrow - Time.zone.now).to_i
+  end
 end
