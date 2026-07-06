@@ -13,12 +13,21 @@ class TrainingsController < ApplicationController
   end
 
   def create
+    if AiUsageService.limit_reached?(current_user)
+      redirect_back(
+        fallback_location: trainings_path,
+        alert: "本日のAI利用回数の上限に達しました"
+      )
+      return
+    end
+
     @training = current_user.trainings.build(training_params)
 
     if @training.save
       result = Openai::FeedbackGenerator.call(@training)
+      AiUsageService.increment(current_user)
 
-      # 👇 DBに保存
+      # DBに保存
       AiFeedback.create!(
         training: @training,
         good_points: result["good_points"],

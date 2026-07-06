@@ -26,9 +26,9 @@ class AiUsageService
 
   def self.increment(user)
     key = redis_key(user)
-
     REDIS.incr(key)
 
+    # ttl = Time To Live（後何秒で消えるか）
     unless REDIS.ttl(key).positive?
       REDIS.expire(key, seconds_until_midnight)
     end
@@ -37,5 +37,9 @@ class AiUsageService
   def self.seconds_until_midnight
     tomorrow = Time.zone.tomorrow.beginning_of_day
     (tomorrow - Time.zone.now).to_i
+  end
+
+  def self.limit_reached?(user)
+    remaining_count(user).zero?
   end
 end
