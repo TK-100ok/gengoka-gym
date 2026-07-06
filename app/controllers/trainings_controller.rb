@@ -21,13 +21,9 @@ class TrainingsController < ApplicationController
       return
     end
 
-    @training = current_user.trainings.build(training_params)
-
-    if @training.save
+    ActiveRecord::Base.transaction do
+      @training = current_user.trainings.create!(training_params)
       result = Openai::FeedbackGenerator.call(@training)
-      AiUsageService.increment(current_user)
-
-      # DBに保存
       AiFeedback.create!(
         training: @training,
         good_points: result["good_points"],
@@ -35,11 +31,20 @@ class TrainingsController < ApplicationController
         overall_comment: result["overall_comment"],
         score: result["score"]
       )
-      redirect_to result_training_path(@training), notice: "トレーニングを保存しました"
-    else
-      @targets = Target.all
-      render :new, status: :unprocessable_entity
+      AiUsageService.increment(current_user)
     end
+
+    redirect_to result_training_path(@training), notice: "トレーニングを保存しました"
+
+  rescue StandardError => e
+    Rails.logger.error(e)
+
+    @training ||= current_user.trainings.build(training_params)
+    @targets = Target.all
+
+    flash.now[:alert] = "AIフィードバックの生成に失敗しました"
+
+    render :new, status: :unprocessable_entity
   end
 
   def show
