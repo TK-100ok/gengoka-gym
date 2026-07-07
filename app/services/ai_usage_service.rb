@@ -21,7 +21,7 @@ class AiUsageService
   end
 
   def self.remaining_count(user)
-    [today_limit(user) - usage_count(user), 0].max
+    [ today_limit(user) - usage_count(user), 0 ].max
   end
 
   def self.increment(user)
