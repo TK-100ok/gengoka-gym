@@ -42,6 +42,7 @@ class TrainingsController < ApplicationController
 
     @training ||= current_user.trainings.build(training_params)
     @targets = Target.all
+    @remaining_ai_usage = AiUsageService.remaining_count(current_user)
 
     flash.now[:alert] = "AIフィードバックの生成に失敗しました"
 
