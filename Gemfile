@@ -23,6 +23,7 @@ gem "ruby-openai"
 gem "devise-i18n"
 gem "ransack"
 gem "kaminari"
+gem "redis"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
