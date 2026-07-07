@@ -10,6 +10,7 @@ class TrainingsController < ApplicationController
   def new
     @training = Training.new
     @targets = Target.all
+    @remaining_ai_usage = AiUsageService.remaining_count(current_user)
   end
 
   def create
