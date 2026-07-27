@@ -1,6 +1,6 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "./controllers"
+import "@hotwired/turbo-rails";
+import "./controllers";
 
 document.addEventListener("turbo:load", () => {
   const select = document.getElementById("training_target_id");

@@ -19,8 +19,15 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4">
-        <%= link_to "ログイン", new_user_session_path, class: "bg-amber-400 hover:bg-amber-500 text-white px-10 py-4 rounded-xl font-bold shadow-lg" %>
-        <%= link_to "無料で始める", new_user_registration_path, class: "bg-white hover:bg-gray-100 text-amber-500 px-10 py-4 rounded-xl font-bold shadow-lg" %>
+
+        <% if user_signed_in? %>
+          <%= link_to "トレーニングを始める", home_path, class: "bg-amber-400 hover:bg-amber-500 text-white px-10 py-4 rounded-xl font-bold shadow-lg" %>
+          <%= link_to "みんなの投稿を見る", posts_path, class: "bg-white hover:bg-gray-100 text-amber-500 px-10 py-4 rounded-xl font-bold shadow-lg" %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "bg-amber-400 hover:bg-amber-500 text-white px-10 py-4 rounded-xl font-bold shadow-lg" %>
+          <%= link_to "無料で始める", new_user_registration_path, class: "bg-white hover:bg-gray-100 text-amber-500 px-10 py-4 rounded-xl font-bold shadow-lg" %>
+        <% end %>
+
       </div>
     </div>
   </section>
@@ -139,9 +146,14 @@
         </div>
       </div>
 
-      <div class="mt-16">
-        <%= link_to "今すぐ始める", new_user_registration_path, class: "inline-block bg-amber-400 hover:bg-amber-500 text-white px-12 py-4 rounded-xl font-bold shadow-lg" %>
+      <div class="mt-24">
+        <% if user_signed_in? %>
+          <%= link_to "トレーニングを始める", home_path, class: "inline-block bg-amber-400 hover:bg-amber-500 text-white px-12 py-4 rounded-xl font-bold shadow-lg" %>
+        <% else %>
+          <%= link_to "今すぐ始める", new_user_registration_path, class: "inline-block bg-amber-400 hover:bg-amber-500 text-white px-12 py-4 rounded-xl font-bold shadow-lg" %>
+        <% end %>
       </div>
+
     </div>
   </section>
 
