@@ -1,45 +1,126 @@
-<div class="flex flex-col items-center justify-center h-[80vh] p-6">
-  <h2 class="text-lg text-gray-700 mb-8">
-    今日もトレーニングしましょう 💪
-  </h2>
+<div class="max-w-6xl mx-auto">
+  <div class="text-center mb-8">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <h1 class="text-4xl font-bold">
+        今日もトレーニングをしましょう
+      </h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-    <%= link_to new_training_path, class: "bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-1 transition" do %>
+      <%= lucide_icon "biceps-flexed", class: "w-10 h-20 text-amber-500" %>
+    </div>
 
-      <div class="text-center">
-        <div class="text-5xl mb-4">
-          📝
-        </div>
+    <p class="text-gray-500">
+      AIフィードバックで少しずつレベルアップ
+    </p>
+  </div>
 
-        <h3 class="text-xl font-bold text-gray-800 mb-2">
-          通常モード
-        </h3>
-
-        <p class="text-gray-500 text-sm">
-          AIからフィードバックを受けながら
-          言語化力を鍛えます。
-        </p>
-      </div>
-
-    <% end %>
-
-    <%= link_to thinking_modes_path, class: "bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-1 transition" do %>
-
-      <div class="text-center">
-        <div class="text-5xl mb-4">
-          🧠
-        </div>
-
-        <h3 class="text-xl font-bold text-gray-800 mb-2">
-          思考力モード
-        </h3>
-
-        <p class="text-gray-500 text-sm">
-          AIとの対話を通して
-          思考力を鍛えます。
-        </p>
-      </div>
-
+  <div class="flex justify-center mb-10">
+    <%= link_to new_training_path, class: "bg-amber-400 hover:bg-amber-500 text-white text-xl font-bold px-12 py-5 rounded-2xl shadow-lg transition" do %>
+      トレーニングを始める
     <% end %>
   </div>
+
+  <!-- 今日のAI利用状況 -->
+  <section class="mb-10">
+    <h2 class="text-3xl font-bold mb-6">
+      今日のAI利用状況
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-32 text-center">
+      <div class="bg-white rounded-2xl shadow p-6">
+        <p class="text-gray-500 text-base mb-2">
+          本日の残りAIフィードバック
+        </p>
+
+        <p class="text-base text-gray-400 mb-4">
+          AIフィードバックは1日3回まで利用できます（上限5回）。
+        </p>
+
+        <p class="text-3xl font-bold text-amber-500">
+          残り <%= @remaining_ai_usage %> 回
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <p class="text-gray-500 text-base mb-2">
+          投稿でAI回数を追加
+        </p>
+
+        <p class="text-base text-gray-400 mb-4">
+          1日1度のみ、投稿するとAIフィードバックを+2回追加できます。
+        </p>
+
+        <% if @posted_today %>
+          <span class="inline-block bg-gray-200 text-gray-600 px-5 py-2 rounded-lg font-semibold">
+            投稿済み
+          </span>
+        <% else %>
+          <%= link_to "投稿する（+2回）", trainings_path, class: "inline-block bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-semibold transition" %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- 活動記録 -->
+  <section class="mb-10">
+    <h2 class="text-3xl font-bold mb-6">
+      活動記録
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-24">
+      <div class="bg-white rounded-2xl shadow p-6 text-center">
+        <p class="text-gray-500 mb-2">
+          今日のトレーニング数
+        </p>
+
+        <p class="text-3xl font-bold text-amber-500">
+          <%= @today_trainings_count %>回
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6 text-center">
+        <p class="text-gray-500 mb-2">
+          累計トレーニング数
+        </p>
+
+        <p class="text-3xl font-bold text-amber-500">
+          <%= current_user.trainings.count %>回
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6 text-center">
+        <p class="text-gray-500 mb-2">
+          累計投稿数
+        </p>
+
+        <p class="text-3xl font-bold text-amber-500">
+          <%= current_user.posts.count %>件
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最近のトレーニング -->
+  <section>
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-3xl font-bold">
+        最近のトレーニング
+      </h2>
+
+      <%= link_to "履歴を見る", trainings_path, class: "text-amber-500 hover:underline" %>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <% current_user.trainings.order(created_at: :desc).limit(3).each do |training| %>
+        <%= link_to training_path(training), class: "block bg-white rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition p-6" do %>
+          <p class="text-sm text-gray-400 mb-3">
+            <%= l training.created_at, format: :short %>
+          </p>
+
+          <h3 class="text-xl font-bold mb-4 line-clamp-2">
+            <%= training.theme %>
+          </h3>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
 </div>
