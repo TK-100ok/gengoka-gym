@@ -33,16 +33,17 @@
   </head>
 
   <body>
-    <div class="flex min-h-screen bg-amber-50 text-gray-800">
+    <div class="min-h-screen bg-amber-50 text-gray-800">
 
-      <% if user_signed_in? %>
-        <%= render "shared/sidebar" %>
-      <% end %>
+      <%= render "shared/header" %>
 
-      <main class="flex-1 p-8">
+      <main class="px-24 pt-8 pb-24">
         <%= render "shared/flash" %>
         <%= yield %>
       </main>
+
+      <%= render "shared/footer" %>
+
     </div>
   </body>
 </html>
