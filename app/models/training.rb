@@ -3,7 +3,7 @@ class Training < ApplicationRecord
   belongs_to :target
 
   validates :theme, presence: true
-  validates :explanation, presence: true, length: { minimum: 10 }
+  validates :explanation, presence: true, length: { minimum: 10, maximum: 600 }
   validates :target, presence: true
 
   validate :custom_target_if_needed
