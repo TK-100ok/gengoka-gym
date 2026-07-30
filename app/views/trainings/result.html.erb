@@ -1,54 +1,45 @@
-<div class="w-full max-w-2xl bg-white rounded-2xl shadow-md p-8">
+<h1 class="text-4xl font-bold text-amber-500 text-center mb-8">
+  AIフィードバック
+</h1>
 
-  <h1 class="text-2xl font-bold text-amber-500 mb-6">
-    🎉 トレーニング完了
-  </h1>
+<% feedback = @training.ai_feedback %>
 
-  <p class="text-gray-500 mb-6">
-    AIによるフィードバックです
+<!-- スコア -->
+<div class="text-center mb-10">
+  <p class="text-5xl font-bold text-amber-700">
+    <%= feedback.score %>
+    <span class="text-2xl">/100 点</span>
   </p>
+</div>
 
-  <% feedback = @training.ai_feedback %>
+<section class="p-4 border border-amber-300 bg-amber-200 rounded-lg mb-8">
+  <h2 class="text-xl font-bold text-gray-700 mb-3">
+    総評
+  </h2>
+  <p class="text-lg text-gray-700 whitespace-pre-line leading-8">
+    <%= feedback.overall_comment %>
+  </p>
+</section>
 
-  <div class="space-y-5">
+<section class="p-4 border border-green-200 bg-green-50 rounded-lg mb-8">
+  <h2 class="text-xl font-semibold text-green-600 mb-2">
+    良い点
+  </h2>
+  <p class="text-lg text-gray-700 whitespace-pre-line">
+    <%= feedback.good_points %>
+  </p>
+</section>
 
-    <div class="p-4 bg-amber-100 rounded-lg text-center">
-      <p class="text-lg font-bold text-amber-600">
-        スコア：<%= feedback.score %>点
-      </p>
-    </div>
+<section class="p-4 border border-red-200 bg-red-50 rounded-lg">
+  <h2 class="text-xl font-semibold text-red-600 mb-2">
+    改善点
+  </h2>
+  <p class="text-lg text-gray-700 whitespace-pre-line">
+    <%= feedback.improvement_points %>
+  </p>
+</section>
 
-    <div class="p-4 border border-green-200 bg-green-50 rounded-lg">
-      <h2 class="font-semibold text-green-600 mb-2">
-        👍 良い点
-      </h2>
-      <p class="text-gray-700 whitespace-pre-line">
-        <%= feedback.good_points %>
-      </p>
-    </div>
-
-    <div class="p-4 border border-red-200 bg-red-50 rounded-lg">
-      <h2 class="font-semibold text-red-600 mb-2">
-        🔧 改善点
-      </h2>
-      <p class="text-gray-700 whitespace-pre-line">
-        <%= feedback.improvement_points %>
-      </p>
-    </div>
-
-    <div class="p-4 border border-amber-200 bg-amber-50 rounded-lg">
-      <h2 class="font-semibold text-amber-600 mb-2">
-        📝 総評
-      </h2>
-      <p class="text-gray-700 whitespace-pre-line">
-        <%= feedback.overall_comment %>
-      </p>
-    </div>
-
-    <div class="pt-4">
-      <%= link_to "トレーニングへ戻る", new_training_path,
-        class: "w-full block text-center bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
-    </div>
-
-  </div>
+<div class="flex justify-center gap-4 mt-10">
+  <%= link_to "もう一度トレーニング", new_training_path, class: "px-8 py-3 bg-amber-400 hover:bg-amber-500 text-white font-bold rounded-lg" %>
+  <%= link_to "保存した内容を見る", training_path(@training), class: "px-8 py-3 bg-pink-300 border border-amber-400 text-gray-700 hover:bg-pink-400 font-bold rounded-lg" %>
 </div>
