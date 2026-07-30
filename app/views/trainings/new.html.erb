@@ -66,10 +66,17 @@
       </div>
     </div>
 
-    <%= f.label :explanation, "説明内容", class: "block text-lg font-semibold text-gray-600 mb-1" %>
-    <%= f.text_area :explanation,
-      placeholder: "相手に合わせて説明してみましょう",
-      class: "w-full bg-white h-40 px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
+    <div data-controller="character-counter">
+      <%= f.label :explanation, "説明内容", class: "block text-lg font-semibold text-gray-600 mb-1" %>
+      <%= f.text_area :explanation,
+        placeholder: "相手に合わせて説明してみましょう",
+        class: "w-full bg-white h-40 px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400",
+        data: { action: "input->character-counter#count", character_counter_target: "textarea" } %>
+
+      <p class="mt-2 text-sm text-gray-500 text-right" data-character-counter-target="counter">
+        0 / 600文字
+      </p>
+    </div>
 
     <%= f.submit "トレーニング完了",
       class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
