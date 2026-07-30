@@ -47,3 +47,8 @@
     <%= feedback.improvement_points %>
   </p>
 </section>
+
+<div class="flex justify-center gap-4 mt-10">
+  <%= link_to "もう一度トレーニング", new_training_path, class: "px-8 py-3 bg-amber-400 hover:bg-amber-500 text-white font-bold rounded-lg" %>
+  <%= link_to "保存した内容を見る", training_path(@training), class: "px-8 py-3 bg-pink-300 border border-amber-400 text-gray-700 hover:bg-pink-400 font-bold rounded-lg" %>
+</div>
