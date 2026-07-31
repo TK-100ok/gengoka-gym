@@ -16,6 +16,11 @@ class PostsController < ApplicationController
     )
   end
 
+  def show
+    @post = Post.includes(training: [:target, :ai_feedback]).find(params[:id])
+    @training = @post.training
+  end
+
   def destroy
     training = current_user.trainings.find(params[:training_id])
     training.post&.destroy
