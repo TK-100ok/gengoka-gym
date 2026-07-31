@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(training: [:target, :ai_feedback]).find(params[:id])
+    @post = Post.includes(training: [ :target, :ai_feedback ]).find(params[:id])
     @training = @post.training
   end
 
