@@ -1,0 +1,92 @@
+<% feedback = training.ai_feedback %>
+
+<!-- 日付 -->
+<p class="text-sm text-gray-400 mb-8">
+  <%= training.created_at.strftime("%Y/%m/%d %H:%M") %>
+</p>
+
+<!-- スコア -->
+<% if feedback.present? %>
+  <section class="text-center mb-10">
+    <p class="text-sm text-gray-500">
+      AIスコア
+    </p>
+
+    <p class="text-6xl font-bold text-amber-500 mt-2">
+      <%= feedback.score %>
+    </p>
+
+    <p class="text-gray-500">
+      /100
+    </p>
+  </section>
+<% end %>
+
+<hr class="mb-8">
+
+<section class="mb-8">
+  <h2 class="text-lg font-semibold mb-2">
+    テーマ
+  </h2>
+
+  <p class="text-xl font-bold">
+    <%= training.theme %>
+  </p>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-lg font-semibold mb-2">
+    説明する相手
+  </h2>
+
+  <span class="inline-flex px-4 py-2 rounded-full bg-amber-100 text-amber-700">
+    <%= training.display_target %>
+  </span>
+</section>
+
+<section class="mb-10">
+  <h2 class="text-lg font-semibold mb-3">
+    説明内容
+  </h2>
+
+  <div class="bg-amber-50 rounded-xl p-5 leading-relaxed whitespace-pre-wrap">
+    <%= training.explanation %>
+  </div>
+</section>
+
+<hr class="mb-8">
+
+<!-- フィードバック -->
+<% if feedback.present? %>
+  <section class="space-y-8">
+    <div>
+      <h2 class="text-xl font-bold text-green-600 mb-2">
+        良い点
+      </h2>
+
+      <p class="leading-relaxed whitespace-pre-line">
+        <%= feedback.good_points %>
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-red-600 mb-2">
+        改善点
+      </h2>
+
+      <p class="leading-relaxed whitespace-pre-line">
+        <%= feedback.improvement_points %>
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-bold text-amber-600 mb-2">
+        総評
+      </h2>
+
+      <p class="leading-relaxed whitespace-pre-line">
+        <%= feedback.overall_comment %>
+      </p>
+    </div>
+  </section>
+<% end %>
