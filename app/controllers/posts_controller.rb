@@ -24,9 +24,6 @@ class PostsController < ApplicationController
   def destroy
     training = current_user.trainings.find(params[:training_id])
     training.post&.destroy
-    redirect_back(
-      fallback_location: trainings_path,
-      notice: "投稿を取り消しました"
-    )
+    redirect_to posts_path, notice: "投稿を取り消しました"
   end
 end

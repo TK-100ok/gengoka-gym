@@ -87,20 +87,11 @@
           </p>
         </div>
 
-        <% if @training.post.present? %>
-
-          <%= button_to "投稿を取り消す",
-            training_post_path(@training),
-            method: :delete,
-            class: "w-full bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 rounded-lg" %>
-
-        <% else %>
-
-          <%= button_to "投稿する",
-            training_post_path(@training),
-            method: :post,
-            class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
-
+        <% if @post.user == current_user %>
+            <%= button_to "投稿を取り消す",
+                training_post_path(@training),
+                method: :delete,
+                class: "mx-auto block px-5 py-2 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-700 font-semibold transition-colors" %>
         <% end %>
 
       </div>
