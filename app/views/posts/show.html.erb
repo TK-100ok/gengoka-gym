@@ -1,10 +1,26 @@
 <%= render "trainings/training_detail", training: @training %>
 
-<div class="mt-10">
-  <% if @post.user == current_user %>
+<% if @post.user == current_user %>
+
+  <div class="mt-10 grid grid-cols-2 gap-4 max-w-md mx-auto">
+    <div class="text-center">
+      <%= link_to "投稿一覧に戻る",
+        posts_path,
+      class: "w-full inline-block px-5 py-3 bg-amber-400 hover:bg-amber-500 text-white font-semibold transition rounded-lg" %>
+    </div>
+
     <%= button_to "投稿を取り消す",
       training_post_path(@training),
       method: :delete,
-      class: "mx-auto block px-5 py-2 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-700 font-semibold transition-colors" %>
-  <% end %>
-</div>
+      class: "w-full mx-auto block px-5 py-3 bg-red-400 hover:bg-red-500 text-white font-semibold rounded-lg" %>
+  </div>
+
+<% else %>
+
+  <div class="mt-10 flex justify-center">
+    <%= link_to "投稿一覧に戻る",
+      posts_path,
+      class: "w-48 text-center px-5 py-3 border border-gray-300 rounded-lg bg-amber-400 text-white hover:bg-amber-500 font-semibold transition" %>
+  </div>
+
+<% end %>
