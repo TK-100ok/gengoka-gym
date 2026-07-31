@@ -18,7 +18,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     <% @posts.each do |post| %>
         <%= render "trainings/training_card",
-            training: post.training %>
+            training: post.training,
+            detail_path: post_path(post) %>
     <% end %>
     </div>
 

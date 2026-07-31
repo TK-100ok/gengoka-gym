@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :thinking_modes, only: :index
-  resources :posts, only: :index
+  resources :posts, only: %i[index show]
   resources :favorites, only: :index
 
   resource :contact, only: :show
