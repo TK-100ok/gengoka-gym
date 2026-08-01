@@ -25,7 +25,7 @@
 </div>
 
 <!--ローディングアニメーション画面 -->
-<div id="loading-overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+<div data-loading-target="overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
   <div class="text-center">
     <div class="mx-auto h-16 w-16 animate-spin rounded-full border-4 border-amber-200 border-t-amber-500">
     </div>
@@ -40,7 +40,7 @@
   </div>
 </div>
 
-<%= form_with model: @training, url: trainings_path, local: true do |f| %>
+<%= form_with model: @training, url: trainings_path, local: true, data: { controller: "loading", action: "submit->loading#show" }  do |f| %>
   <div class="space-y-5">
 
     <% if @training.errors.any? %>
@@ -94,7 +94,9 @@
       </p>
     </div>
 
-    <%= f.submit "保存してフィードバックをもらう", class: "mx-auto block bg-amber-400 hover:bg-amber-500 text-white font-bold px-10 py-3 rounded-lg" %>
+    <%= f.submit "保存してフィードバックをもらう",
+      class: "mx-auto block bg-amber-400 hover:bg-amber-500 text-white font-bold px-10 py-3 rounded-lg",
+      data: { loading_target: "submit" } %>
 
   </div>
 <% end %>
