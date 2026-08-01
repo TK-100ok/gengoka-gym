@@ -24,6 +24,22 @@
   </div>
 </div>
 
+<!--ローディングアニメーション画面 -->
+<div id="loading-overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+  <div class="text-center">
+    <div class="mx-auto h-16 w-16 animate-spin rounded-full border-4 border-amber-200 border-t-amber-500">
+    </div>
+
+    <p class="mt-6 text-xl font-bold text-amber-600">
+      AIフィードバックを生成しています
+    </p>
+
+    <p class="mt-2 text-gray-500">
+      少々お待ちください...
+    </p>
+  </div>
+</div>
+
 <%= form_with model: @training, url: trainings_path, local: true do |f| %>
   <div class="space-y-5">
 
