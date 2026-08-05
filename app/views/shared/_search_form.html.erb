@@ -1,11 +1,14 @@
 <%= search_form_for q, url: url, method: :get do |f| %>
   <div class="mb-6 flex gap-2">
 
-    <%= f.search_field(
-      search_key,
-      placeholder: "テーマ・相手・説明内容で検索",
-      class: "flex-1 bg-white rounded-lg border border-gray-300 px-4 py-2"
-    ) %>
+    <div class="relative flex-1">
+      <%= lucide_icon "search", class: "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-amber-500" %>
+      <%= f.search_field(
+        search_key,
+        placeholder: "テーマ・相手・説明内容で検索",
+        class: "w-full bg-white rounded-lg border border-gray-300 pl-10 pr-4 py-3"
+      ) %>
+    </div>
 
     <%= f.submit(
       "検索",
@@ -15,7 +18,7 @@
     <%= f.select :s,
       options_for_select(sort_options, params.dig(:q, :s)),
       {},
-      class: "bg-white rounded-lg border border-gray-300 px-4 py-2",
+      class: "bg-white rounded-lg border border-gray-300 ml-2 px-4 py-2",
       onchange: "this.form.submit();" %>
 
   </div>
