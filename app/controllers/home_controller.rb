@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   def index
     @remaining_ai_usage = AiUsageService.remaining_count(current_user)
     @today_trainings_count = current_user.trainings.where(created_at: Time.zone.today.all_day).count
+    @posted_today = current_user.posts.where(created_at: Time.zone.today.all_day).exists?
   end
 end

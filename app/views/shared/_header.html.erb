@@ -12,23 +12,29 @@
     <!-- メニュー -->
     <% if user_signed_in? %>
 
-      <nav class="flex items-center gap-8">
+      <nav class="flex items-center gap-12 mr-12">
         <%= link_to "ホーム", home_path, class: "hover:text-amber-500 transition" %>
-        <%= link_to "履歴", trainings_path, class: "hover:text-amber-500 transition" %>
-        <%= link_to "投稿一覧", posts_path, class: "hover:text-amber-500 transition" %>
+        <%= link_to "トレーニング履歴", trainings_path, class: "hover:text-amber-500 transition" %>
+        <%= link_to "みんなの投稿", posts_path, class: "hover:text-amber-500 transition" %>
         <%= link_to "お気に入り", favorites_path, class: "hover:text-amber-500 transition" %>
       </nav>
 
-      <div class="flex items-center gap-4">
-        <%= link_to settings_path, class: "flex items-center gap-2 hover:text-amber-500 transition" do %>
-        <%= lucide_icon "circle-user-round", class: "w-7 h-7" %>
-        <span>プロフィール</span>
-        <% end %>
+      <div data-controller="dropdown" class="relative">
+        <button type="button" data-action="click->dropdown#toggle" class="flex items-center gap-2 hover:text-amber-500 transition">
+          <%= lucide_icon "circle-user-round", class: "w-8 h-8" %>
+          <%= lucide_icon "chevron-down", class: "w-5 h-5" %>
+        </button>
 
-        <%= link_to "ログアウト",
-        destroy_user_session_path,
-        data: { turbo_method: :delete },
-        class: "bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded-lg font-bold" %>
+        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-44 rounded-lg bg-white text-black shadow-lg border">
+          <%= link_to edit_user_registration_path, class: "block px-4 py-3 hover:bg-gray-100 rounded-lg" do %>
+            プロフィール
+          <% end %>
+
+          <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "flex items-center gap-2 px-4 py-3 text-red-500 hover:bg-gray-100 rounded-lg" do %>
+            <%= lucide_icon "log-out", class: "w-4 h-4" %>
+            <span>ログアウト</span>
+          <% end %>
+        </div>
       </div>
 
     <% else %>

@@ -2,9 +2,9 @@
 
 <div class="mt-10 grid grid-cols-2 gap-4 max-w-md mx-auto">
   <div class="text-center">
-    <%= link_to "履歴に戻る",
-      trainings_path,
-      class: "w-full inline-block px-5 py-3 bg-amber-400 hover:bg-amber-500 text-white font-semibold transition rounded-lg" %>
+    <%= render "shared/back_button",
+      text: "履歴に戻る",
+      path: trainings_path %>
   </div>
 
   <% if @training.post.present? %>
