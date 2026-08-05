@@ -12,6 +12,12 @@ class FavoritesController < ApplicationController
     current_user.favorites.create!(training: @training)
   end
 
+  def show
+    @training = current_user.favorite_trainings
+                            .includes(:target, :ai_feedback)
+                            .find(params[:id])
+  end
+
   def destroy
     @training = Training.find(params[:training_id])
     favorite = current_user.favorites.find_by!(training: @training)

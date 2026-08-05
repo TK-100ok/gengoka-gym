@@ -19,7 +19,7 @@
     <% @trainings.each do |training| %>
       <%= render "trainings/training_card",
           training: training,
-          detail_path: training_path(training) %>
+          detail_path: favorite_path(training) %>
     <% end %>
   </div>
 
