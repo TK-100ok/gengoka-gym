@@ -2,23 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="hamburger"
 export default class extends Controller {
-  static targets = ["menu"]
+  static targets = ["drawer", "overlay"]
 
-  toggle() {
-    this.menuTarget.classList.toggle("hidden")
+  toggle(event) {
+    event.stopPropagation()
+
+    this.drawerTarget.classList.toggle("-translate-x-full")
+    this.overlayTarget.classList.toggle("hidden")
+
+    document.body.classList.toggle("overflow-hidden")
   }
 
-  close(event) {
-    if (!this.element.contains(event.target)) {
-      this.menuTarget.classList.add("hidden")
-    }
-  }
+  close() {
+    this.drawerTarget.classList.add("-translate-x-full")
+    this.overlayTarget.classList.add("hidden")
 
-  connect() {
-    document.addEventListener("click", this.close.bind(this))
-  }
-
-  disconnect() {
-    document.removeEventListener("click", this.close.bind(this))
+    document.body.classList.remove("overflow-hidden")
   }
 }
