@@ -75,17 +75,26 @@
       </div>
 
       <nav class="flex flex-col py-2">
-        <%= link_to "ホーム", home_path, class: "px-6 py-4 hover:bg-gray-700" %>
-        <%= link_to "トレーニング履歴", trainings_path, class: "px-6 py-4 hover:bg-gray-700" %>
-        <%= link_to "みんなの投稿", posts_path, class: "px-6 py-4 hover:bg-gray-700" %>
-        <%= link_to "お気に入り", favorites_path, class: "px-6 py-4 hover:bg-gray-700" %>
-        <hr class="border-gray-700 my-2">
-        <%= link_to "プロフィール", edit_user_registration_path, class: "px-6 py-4 hover:bg-gray-700" %>
-        <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "px-6 py-4 text-red-400 hover:bg-gray-700" do %>
+        <% if user_signed_in? %>
+
+          <%= link_to "ホーム", home_path, class: "px-6 py-4 hover:bg-gray-700" %>
+          <%= link_to "トレーニング履歴", trainings_path, class: "px-6 py-4 hover:bg-gray-700" %>
+          <%= link_to "みんなの投稿", posts_path, class: "px-6 py-4 hover:bg-gray-700" %>
+          <%= link_to "お気に入り", favorites_path, class: "px-6 py-4 hover:bg-gray-700" %>
+          <hr class="border-gray-700 my-2">
+          <%= link_to "プロフィール", edit_user_registration_path, class: "px-6 py-4 hover:bg-gray-700" %>
+          <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "px-6 py-4 text-red-400 hover:bg-gray-700" do %>
           <div class="flex items-center gap-2">
             <%= lucide_icon "log-out", class: "w-5 h-5" %>
             ログアウト
           </div>
+          <% end %>
+        
+        <% else %>
+
+            <%= link_to "ログイン", new_user_session_path, class: "px-6 py-4 hover:bg-gray-700" %>
+            <%= link_to "無料で始める", new_user_registration_path, class: "px-6 py-4 text-amber-400 font-semibold hover:bg-gray-700" %>
+
         <% end %>
       </nav>
 
