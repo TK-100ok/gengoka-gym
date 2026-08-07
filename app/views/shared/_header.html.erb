@@ -25,13 +25,13 @@
         <%= link_to "お気に入り", favorites_path, class: "hover:text-amber-500 transition" %>
       </nav>
 
-      <div data-controller="dropdown" class="relative">
+      <div data-controller="dropdown" class="relative hidden lg:block">
         <button type="button" data-action="click->dropdown#toggle" class="flex items-center gap-2 hover:text-amber-500 transition">
           <%= lucide_icon "circle-user-round", class: "w-8 h-8" %>
           <%= lucide_icon "chevron-down", class: "w-5 h-5" %>
         </button>
 
-        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-44 rounded-lg bg-white text-black shadow-lg border">
+        <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-44 rounded-lg bg-white text-black shadow-lg border z-50">
           <%= link_to edit_user_registration_path, class: "block px-4 py-3 hover:bg-gray-100 rounded-lg" do %>
             プロフィール
           <% end %>
