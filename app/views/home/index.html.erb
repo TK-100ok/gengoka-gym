@@ -20,7 +20,7 @@
 
 <!-- 今日のAI利用状況 -->
 <section class="mb-10">
-  <h2 class="text-3xl font-bold mb-6">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-6">
     今日のAI利用状況
   </h2>
 
@@ -61,7 +61,7 @@
 
 <!-- 活動記録 -->
 <section class="mb-10">
-  <h2 class="text-3xl font-bold mb-6">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-6">
     活動記録
   </h2>
 
@@ -100,15 +100,15 @@
 
 <!-- 最近のトレーニング -->
 <section>
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="text-3xl font-bold">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+    <h2 class="text-2xl sm:text-3xl font-bold">
       最近のトレーニング
     </h2>
 
     <%= link_to "履歴を見る", trainings_path, class: "text-amber-500 hover:underline" %>
   </div>
 
-  <div class="grid md:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
     <% current_user.trainings.order(created_at: :desc).limit(3).each do |training| %>
       <%= link_to training_path(training), class: "block bg-white rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition p-6" do %>
         <p class="text-sm text-gray-400 mb-3">
