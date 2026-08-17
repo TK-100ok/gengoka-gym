@@ -1,0 +1,10 @@
+ja:
+  devise:
+    passwords:
+      send_instructions: "パスワード再設定用のメールを送信しました。メールをご確認ください。"
+      updated: "パスワードを変更しました。"
+      updated_not_active: "パスワードを変更しました。"
+      no_token: "パスワード再設定用のリンクが正しくありません。"
+      send_paranoid_instructions: "アカウントが存在する場合、パスワード再設定用のメールを送信しました。"
+      new:
+        title: "パスワードを再設定"

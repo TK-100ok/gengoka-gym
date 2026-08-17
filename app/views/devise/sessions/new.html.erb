@@ -52,8 +52,10 @@
     <% end %>
 
     <!-- Links -->
-    <div class="mt-6 text-center text-sm text-gray-600">
-      <%= render "devise/shared/links" %>
+    <div class="mt-6 text-center text-sm">
+      <%= link_to "パスワードをお忘れですか？",
+        new_user_password_path,
+        class: "text-gray-500 hover:text-amber-500 transition" %>
     </div>
 
   </div>
