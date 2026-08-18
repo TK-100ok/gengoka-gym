@@ -82,6 +82,10 @@ Rails.application.configure do
   config.action_mailer.default_options = {
     from: "言語化ジム <no-reply@gengoka-gym.com>"
   }
+  config.action_mailer.default_url_options = {
+    host: "gengoka-gym.onrender.com",
+    protocol: "https"
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
