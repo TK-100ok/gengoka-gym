@@ -2,11 +2,10 @@ Rails.application.routes.draw do
   get "thinking_modes/index"
   get "contacts/show"
   get "settings/index"
-  devise_for :users,
-    controllers: {
-      registrations: "users/registrations",
-      omniauth_callbacks: "users/omniauth_callbacks"
-    }
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 
   root "top#index"
 
