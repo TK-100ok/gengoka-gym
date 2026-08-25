@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "settings/index"
   devise_for :users, controllers: {
     registrations: "users/registrations",
+    passwords: "users/passwords",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
