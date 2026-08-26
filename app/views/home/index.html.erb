@@ -109,16 +109,28 @@
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-    <% current_user.trainings.order(created_at: :desc).limit(3).each do |training| %>
-      <%= link_to training_path(training), class: "block bg-white rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition p-6" do %>
-        <p class="text-sm text-gray-400 mb-3">
-          <%= l training.created_at, format: :short %>
-        </p>
+    <% trainings = current_user.trainings.order(created_at: :desc).limit(3) %>
 
-        <h3 class="text-xl font-bold mb-4 line-clamp-2">
-          <%= training.theme %>
-        </h3>
+    <% if trainings.any? %>
+
+      <% trainings.each do |training| %>
+        <%= link_to training_path(training), class: "block bg-white rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition p-6" do %>
+          <p class="text-sm text-gray-400 mb-3">
+            <%= l training.created_at, format: :short %>
+          </p>
+
+          <h3 class="text-xl font-bold mb-4 line-clamp-2">
+            <%= training.theme %>
+          </h3>
+        <% end %>
       <% end %>
+
+    <% else %>
+
+      <p class="col-span-full text-center text-gray-500 py-8">
+        まだトレーニングがありません
+      </p>
+
     <% end %>
   </div>
 </section>
