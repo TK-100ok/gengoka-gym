@@ -4,9 +4,9 @@
     <%= render "favorites/favorite_button", training: training %>
   </div>
 
-  <!-- 日付 -->
-  <p class="text-sm text-gray-400 mb-4">
-    <%= training.created_at.strftime("%Y/%m/%d") %>
+  <!-- ユーザー名 -->
+  <p class="truncate text-sm text-gray-500 mb-4">
+    ユーザー：<%= training.user.name %>
   </p>
 
   <!-- テーマ -->
