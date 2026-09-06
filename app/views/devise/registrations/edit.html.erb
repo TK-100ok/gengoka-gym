@@ -42,45 +42,47 @@
       >
     </div>
 
-    <h2 class="font-semibold mb-4">
-      パスワード変更
-    </h2>
+    <% unless resource.provider.present? %>
+      <h2 class="font-semibold mb-4">
+        パスワード変更
+      </h2>
 
-    <!-- 新しいパスワード -->
-    <div class="mb-5">
-      <%= f.label :password, "新しいパスワード", class: "block font-medium mb-2" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
-      <% if resource.errors[:password].any? %>
-        <p class="text-sm text-red-500 mt-1">
-          <%= resource.errors.full_messages_for(:password).join(", ") %>
-        </p>
-      <% end %>
-    </div>
+      <!-- 新しいパスワード -->
+      <div class="mb-5">
+        <%= f.label :password, "新しいパスワード", class: "block font-medium mb-2" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
+        <% if resource.errors[:password].any? %>
+          <p class="text-sm text-red-500 mt-1">
+            <%= resource.errors.full_messages_for(:password).join(", ") %>
+          </p>
+        <% end %>
+      </div>
 
-    <!-- 確認 -->
-    <div class="mb-5">
-      <%= f.label :password_confirmation, "新しいパスワード（確認）", class: "block font-medium mb-2" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
-      <% if resource.errors[:password_confirmation].any? %>
-        <p class="text-sm text-red-500 mt-1">
-          <%= resource.errors.full_messages_for(:password_confirmation).join(", ") %>
-        </p>
-      <% end %>
-    </div>
+      <!-- 確認 -->
+      <div class="mb-5">
+        <%= f.label :password_confirmation, "新しいパスワード（確認）", class: "block font-medium mb-2" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
+        <% if resource.errors[:password_confirmation].any? %>
+          <p class="text-sm text-red-500 mt-1">
+            <%= resource.errors.full_messages_for(:password_confirmation).join(", ") %>
+          </p>
+        <% end %>
+      </div>
 
-    <!-- 現在のパスワード -->
-    <div class="mb-6">
-      <%= f.label :current_password, "現在のパスワード", class: "block font-medium mb-2" %>
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
-      <% if resource.errors[:current_password].any? %>
-        <p class="text-sm text-red-500 mt-1">
-          <%= resource.errors.full_messages_for(:current_password).join(", ") %>
+      <!-- 現在のパスワード -->
+      <div class="mb-6">
+        <%= f.label :current_password, "現在のパスワード", class: "block font-medium mb-2" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "bg-white w-full rounded-lg border border-gray-300 px-4 py-2" %>
+        <% if resource.errors[:current_password].any? %>
+          <p class="text-sm text-red-500 mt-1">
+            <%= resource.errors.full_messages_for(:current_password).join(", ") %>
+          </p>
+        <% end %>
+        <p class="text-sm text-gray-500 mt-1">
+          変更内容を保存するために必要です
         </p>
-      <% end %>
-      <p class="text-sm text-gray-500 mt-1">
-        変更内容を保存するために必要です
-      </p>
-    </div>
+      </div>
+    <% end %>
 
     <%= f.submit "保存する", class: "block mx-auto bg-amber-400 hover:bg-amber-500 text-white px-6 py-2 rounded-lg" %>
 
