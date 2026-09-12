@@ -137,7 +137,7 @@ AIによるフィードバックでは、
 | 言語          | Ruby 3.3.6                |
 | フレームワーク     | Ruby on Rails 7.2.3       |
 | フロントエンド     | Hotwire（Turbo / Stimulus） / Tailwind CSS |
-| データベース      | PostgreSQL （Neon）               |
+| データベース      | PostgreSQL （Neon）             |
 | AI          | OpenAI API                |
 | キャッシュ・データ管理 | Redis                     |
 | 認証          | Devise / Google OAuth 2.0     |
@@ -153,17 +153,31 @@ AIによるフィードバックでは、
 
 ### GitHubを利用した開発フロー
 
+機能ごとにGitHub Issuesでタスクを管理し、Issue単位でブランチを作成して開発しています。
 
+基本的な流れは以下の通りです。
+
+Issue作成
+  ↓
+ブランチ作成
+  ↓
+実装
+  ↓
+Pull Request作成
+  ↓
+GitHub ActionsによるCI
+  ↓
+確認・修正
+  ↓
+mainへマージ
+  ↓
+Renderへデプロイ
 
 ### 小さな単位で機能を実装
 
+一度に多くの機能を変更するのではなく、IssueやPull Request単位で作業内容を分け、変更範囲をできるだけ明確にすることを意識しています。
 
-
-### エラーの原因を記録しながら開発
-
-
-
----
+これにより、問題が発生した際にも原因となった変更を特定しやすくしています。
 
 ## 画面遷移図
 
