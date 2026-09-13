@@ -56,8 +56,7 @@ module Openai
 
       テーマ: #{training.theme}
       相手: #{training.display_target}
-      説明:
-      #{training.explanation}
+      説明: #{training.explanation}
 
       以下の観点で評価してください：
       - わかりやすさ（構造・順序）
@@ -65,11 +64,12 @@ module Openai
       - 相手に合わせた説明か
       - 情報の過不足
 
-      scoreは以下を基準に：
+      scoreは以下を基準に1点単位で細かく採点してください。
       90以上：非常に分かりやすい
       75〜89：概ね良い
       50〜74：改善余地あり
       49以下：分かりにくい
+      20以下：分からない
       TEXT
     end
   end
