@@ -56,3 +56,19 @@ RSpec.describe Training, type: :model do
     expect(training.display_target).to eq("母")
   end
 end
+
+describe ".visible_to" do
+  let(:user) { create(:user) }
+  let(:other_user) { create(:user) }
+  let!(:own_training) { create(:training, user: user) }
+  let!(:posted_training) { create(:training, user: other_user) }
+  let!(:unposted_training) { create(:training, user: other_user) }
+
+  before do
+    create(:post, user: other_user, training: posted_training)
+  end
+
+  it "自分のトレーニングと、他ユーザーの投稿中のトレーニングを返す" do
+    expect(Training.visible_to(user)).to contain_exactly(own_training, posted_training)
+  end
+end
