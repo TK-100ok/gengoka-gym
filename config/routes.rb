@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get "thinking_modes/index"
-  get "contacts/show"
-  get "settings/index"
   devise_for :users, controllers: {
     registrations: "users/registrations",
     passwords: "users/passwords",
@@ -20,13 +17,9 @@ Rails.application.routes.draw do
     resource :favorite, only: %i[create destroy]
   end
 
-  resources :thinking_modes, only: :index
   resources :posts, only: %i[index show]
   resources :favorites, only: %i[index show]
 
-  resource :contact, only: :show
-
-  get "settings", to: "settings#index"
   get "terms", to: "static_pages#terms"
   get "privacy_policy", to: "static_pages#privacy_policy"
   get "up" => "rails/health#show", as: :rails_health_check
