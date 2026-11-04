@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "thinking_modes/index"
   devise_for :users, controllers: {
     registrations: "users/registrations",
     passwords: "users/passwords",
@@ -18,7 +17,6 @@ Rails.application.routes.draw do
     resource :favorite, only: %i[create destroy]
   end
 
-  resources :thinking_modes, only: :index
   resources :posts, only: %i[index show]
   resources :favorites, only: %i[index show]
 
