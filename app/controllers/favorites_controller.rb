@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @q = current_user.favorite_trainings.ransack(params[:q])
+    @q = current_user.favorite_trainings.visible_to(current_user).ransack(params[:q])
     @q.sorts = "created_at desc" if @q.sorts.empty?
     @trainings = @q.result.includes(:target, :ai_feedback).page(params[:page])
   end
@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
 
   def show
     @training = current_user.favorite_trainings
+                            .visible_to(current_user)
                             .includes(:target, :ai_feedback)
                             .find(params[:id])
   end
