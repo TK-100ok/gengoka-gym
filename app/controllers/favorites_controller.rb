@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @training = Training.find(params[:training_id])
+    @training = Training.visible_to(current_user).find(params[:training_id])
     current_user.favorites.create!(training: @training)
   end
 
