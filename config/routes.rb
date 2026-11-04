@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get "thinking_modes/index"
-  get "contacts/show"
   devise_for :users, controllers: {
     registrations: "users/registrations",
     passwords: "users/passwords",
@@ -22,8 +21,6 @@ Rails.application.routes.draw do
   resources :thinking_modes, only: :index
   resources :posts, only: %i[index show]
   resources :favorites, only: %i[index show]
-
-  resource :contact, only: :show
 
   get "terms", to: "static_pages#terms"
   get "privacy_policy", to: "static_pages#privacy_policy"
