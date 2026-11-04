@@ -13,6 +13,11 @@ class Training < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
+  # 他ユーザーが閲覧できるのは投稿中のトレーニングのみ。自分のトレーニングは常に閲覧できる
+  scope :visible_to, ->(user) {
+    left_joins(:post).where("posts.id IS NOT NULL OR trainings.user_id = ?", user.id)
+  }
+
   def display_target
     if target&.name == "その他"
       custom_target.presence || "未設定"
