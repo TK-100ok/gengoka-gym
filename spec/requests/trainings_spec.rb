@@ -126,4 +126,34 @@ RSpec.describe "Trainings", type: :request do
       end
     end
   end
+
+  describe "トレーニングの詳細・結果ページ" do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let(:own_training) { create(:training, user: user) }
+    let(:other_training) { create(:training, user: other_user) }
+
+    before do
+      sign_in user
+      AiFeedback.create!(training: own_training, good_points: "良い点", improvement_points: "改善点", overall_comment: "総評", score: 80)
+    end
+
+    it "自分のトレーニングの詳細ページは表示される" do
+      get training_path(own_training)
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "他のユーザーのトレーニングの詳細ページは404になる" do
+      get training_path(other_training)
+
+      expect(response).to have_http_status(:not_found)
+    end
+
+    it "他のユーザーのトレーニングの結果ページは404になる" do
+      get result_training_path(other_training)
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 end
